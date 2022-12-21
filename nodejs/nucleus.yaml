@@ -1,0 +1,6 @@
+cliVersion: nucleus-cli/v1alpha1
+spec:
+  serviceName: nodejs-sample
+  serviceRuntime: nodejs
+  vars:
+    DEFAULT_NAME: World

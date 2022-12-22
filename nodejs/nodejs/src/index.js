@@ -2,7 +2,8 @@ const http = require('http');
 const url = require('url');
 const axios = require('axios');
 
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
+const port = 30001
 
 http.createServer(async function (req, res) {
     const queryObject = url.parse(req.url, true).query;

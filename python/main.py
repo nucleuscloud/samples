@@ -14,7 +14,7 @@ async def read_root(name: str = None):
     if name is not None:
         name_to_print = name
 
-    return {"message": "Hello {} from FastAPI sample".format(name_to_print)}
+    return {"message": "Hello {} from python sample".format(name_to_print)}
 
 
 @app.get("/items/{item_id}")

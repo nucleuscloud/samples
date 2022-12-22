@@ -1,3 +1,3 @@
-module github.com/nucleuscloud/golang-sample
+module github.com/nucleuscloud/samples/go
 
-go 1.18
+go 1.19

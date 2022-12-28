@@ -35,10 +35,10 @@ http.createServer(async function (req, res) {
     }
 
     res.writeHead(200, {'Content-Type': 'application/json'});
-    res.end({
+    res.end(JSON.stringify({
       data: `hello ${name}`,
       dependentData,
-    });
+    }));
 }).listen(port, "0.0.0.0", () => {
   console.log(`Server running at http://0.0.0.0:${port}/`);
 });

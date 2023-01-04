@@ -2,7 +2,5 @@ cliVersion: nucleus-cli/v1alpha1
 spec:
   serviceName: golang-sample
   serviceRuntime: go
-  buildCommand: go build -v -o bin/main
-  startCommand: ./bin/main
   vars:
     DEFAULT_NAME: Everybody

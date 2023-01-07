@@ -33,5 +33,5 @@ curl localhost:8080
 
 ## Building for multi-platform
 ```
-docker buildx build --platform=linux/arm64,linux/amd64 . -f ./Dockerfile -t ghcr.io/nucleuscloud/golang-sample:latest
+docker buildx build --platform=linux/arm64,linux/amd64 . -f ./Dockerfile -t <tag>
 ```

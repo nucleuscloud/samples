@@ -1,4 +1,4 @@
-FROM golang:1.18 AS builder
+FROM golang:1.19 AS builder
 
 WORKDIR /app
 COPY ./go.mod ./go.mod
@@ -12,7 +12,7 @@ FROM gcr.io/distroless/static AS final
 
 LABEL maintainer="nucleuscloud"
 LABEL org.opencontainers.image.description="Golang Sample Image"
-LABEL org.opencontainers.image.source="https://github.com/nucleuscloud/golang-sample"
+LABEL org.opencontainers.image.source="https://github.com/nucleuscloud/samples/golang-sample"
 USER nonroot:nonroot
 
 COPY --from=builder --chown=nonroot:nonroot /app/bin/main /

@@ -12,7 +12,7 @@ FROM gcr.io/distroless/static AS final
 
 LABEL maintainer="nucleuscloud"
 LABEL org.opencontainers.image.description="Golang Sample Image"
-LABEL org.opencontainers.image.source="https://github.com/nucleuscloud/samples/golang-sample"
+LABEL org.opencontainers.image.source="https://github.com/nucleuscloud/samples/golang"
 USER nonroot:nonroot
 
 COPY --from=builder --chown=nonroot:nonroot /app/bin/main /

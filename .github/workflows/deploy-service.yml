@@ -1,0 +1,51 @@
+name: Test deploy service to Nucleus
+on:
+  workflow_dispatch:
+    inputs:
+      nucleus_environment:
+        description: 'Nucleus environment to deploy in'
+        type: choice
+        required: true
+        options:
+          - stage
+          - production
+      deploy_environment:
+        description: 'Environment to deploy service to'
+        type: string
+        required: true
+      project:
+        description: 'Sample project to deploy'
+        type: choice
+        options:
+          - go
+          - nodejs
+          - python
+          - ruby
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set nucleus debug env
+        if: "${{ inputs.nucleus_environment == 'stage' }}"
+        id: debug
+        run: |
+          echo "NUCLEUS_DEBUG_ENV=stage" >> $GITHUB_ENV
+      - name: Download Nucleus CLI & Login Stage
+        if: "${{ inputs.nucleus_environment == 'stage' }}"
+        uses: nucleuscloud/setup-nucleus-cli-action@v1
+        with:
+          client_id: ${{ secrets.STAGE_E2E_TEST_CLIENT_ID }}
+          client_secret: ${{ secrets.STAGE_E2E_TEST_CLIENT_SECRET }}
+      - name: Download Nucleus CLI & Login
+        if: "${{ inputs.nucleus_environment == 'production' }}"
+        uses: nucleuscloud/setup-nucleus-cli-action@v1
+        with:
+          client_id: ${{ secrets.PROD_E2E_TEST_CLIENT_ID }}
+          client_secret: ${{ secrets.PROD_E2E_TEST_CLIENT_SECRET }}
+      - name: Deploy Service
+        working-directory: './${{ inputs.project }}'
+        run: nucleus deploy --env $environment
+        env:
+          environment: ${{ inputs.deploy_environment }}

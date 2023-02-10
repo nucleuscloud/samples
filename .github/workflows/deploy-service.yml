@@ -15,13 +15,13 @@ on:
         required: true
       project:
         description: 'Sample project to deploy'
-        type: choice
+        type: string
         required: true
-        options:
-          - go
-          - nodejs
-          - python
-          - ruby
+        # options:
+        #   - go
+        #   - nodejs
+        #   - python
+        #   - ruby
 
 jobs:
   deploy:

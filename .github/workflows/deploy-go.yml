@@ -14,7 +14,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if:  ${{ inputs.nucleus_environment == 'stage' }} 
+    if: ${{ inputs.nucleus_environment == 'stage' }} 
     steps:
       - uses: actions/checkout@v3
       - name: set nucleus debug env
@@ -29,8 +29,8 @@ jobs:
       - uses: nucleuscloud/deploy-action@v1
         working-directory: ./go
         with:
-          environment: ${{ inputs.nucleus_environment }}
-    if:  ${{ inputs.nucleus_environment == 'production' }}
+          environment: ${{ inputs.deploy_environment }}
+    if: ${{ inputs.nucleus_environment == 'production' }}
     steps:
       - uses: actions/checkout@v3
       - name: Download Nucleus CLI & Login

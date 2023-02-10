@@ -3,17 +3,24 @@ on:
   workflow_dispatch:
     inputs:
       nucleus_environment:
-        description: 'Nucleus environment to deploy to stage or prod'
-        type: string
+        description: 'Nucleus environment to deploy in'
+        type: choice
         required: true
+        options:
+          - stage
+          - production
       deploy_environment:
         description: 'Environment to deploy service to'
         type: string
         required: true
-
-defaults:
-  run:
-    working-directory: ./go
+      project:
+        description: 'Sample project to deploy'
+        type: choice
+        options:
+          - go
+          - nodejs
+          - python
+          - ruby
 
 jobs:
   deploy:
@@ -38,7 +45,8 @@ jobs:
           client_id: ${{ secrets.PROD_E2E_TEST_CLIENT_ID }}
           client_secret: ${{ secrets.PROD_E2E_TEST_CLIENT_SECRET }}
       - name: Deploy Service
-        working-directory: ./go
+        working-directory: './$project'
         run: nucleus deploy --env $environment
         env:
           environment: ${{ inputs.deploy_environment }}
+          project: ${{ inputs.project }}

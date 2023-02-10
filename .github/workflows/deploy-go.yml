@@ -11,6 +11,10 @@ on:
         type: string
         required: true
 
+defaults:
+  run:
+    working-directory: go
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,7 +37,7 @@ jobs:
         with:
           client_id: ${{ secrets.PROD_E2E_TEST_CLIENT_ID }}
           client_secret: ${{ secrets.PROD_E2E_TEST_CLIENT_SECRET }}
-      - uses: nucleuscloud/deploy-action@v1
-        working-directory: ./go
+      - name: Deploy Service
+        uses: nucleuscloud/deploy-action@v1
         with:
           environment: ${{ inputs.deploy_environment }}

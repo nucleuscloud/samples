@@ -16,6 +16,7 @@ on:
       project:
         description: 'Sample project to deploy'
         type: choice
+        required: true
         options:
           - go
           - nodejs

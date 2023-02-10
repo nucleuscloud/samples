@@ -19,9 +19,11 @@ on:
         required: true
         options:
           - go
-          - nodejs
+          - nodejs/nodejs
+          - nodejs/nextjs-sample
+          - nodejs/nodejs-typescript
           - python
-          - ruby
+          - ruby/unicorn
 
 jobs:
   deploy:

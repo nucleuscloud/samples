@@ -3,18 +3,18 @@ on:
   workflow_dispatch:
     inputs:
       nucleus_environment:
-        description: 'Nucleus environment to deploy to'
+        description: 'Nucleus environment to deploy to stage or prod'
         type: string
         required: true
-      deploy_prod:
-        description: 'True to deploy service in prod otherwise deploy to stage'
+      deploy_environment:
+        description: 'Environment to deploy service to'
+        type: string
         required: true
-        type: boolean
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if:  ${{ !inputs.deploy_prod }} 
+    if:  ${{ inputs.nucleus_environment == 'stage' }} 
     steps:
       - uses: actions/checkout@v3
       - name: set nucleus debug env
@@ -30,7 +30,7 @@ jobs:
         working-directory: ./go
         with:
           environment: ${{ inputs.nucleus_environment }}
-    if:  ${{ inputs.deploy_prod }} 
+    if:  ${{ inputs.nucleus_environment == 'production' }}
     steps:
       - uses: actions/checkout@v3
       - name: Download Nucleus CLI & Login
@@ -41,4 +41,4 @@ jobs:
       - uses: nucleuscloud/deploy-action@v1
         working-directory: ./go
         with:
-          environment: ${{ inputs.nucleus_environment }}
+          environment: ${{ inputs.deploy_environment }}

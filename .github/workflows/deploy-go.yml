@@ -38,6 +38,7 @@ jobs:
           client_id: ${{ secrets.PROD_E2E_TEST_CLIENT_ID }}
           client_secret: ${{ secrets.PROD_E2E_TEST_CLIENT_SECRET }}
       - name: Deploy Service
-        uses: nucleuscloud/deploy-action@v1
-        with:
+        working-directory: ./go
+        run: nucleus deploy --env $environment
+        env:
           environment: ${{ inputs.deploy_environment }}

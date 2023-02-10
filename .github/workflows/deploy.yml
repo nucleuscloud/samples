@@ -1,4 +1,4 @@
-name: Test deploy go service to Nucleus
+name: Test deploy a service to Nucleus
 on:
   workflow_dispatch:
     inputs:

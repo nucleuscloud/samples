@@ -18,10 +18,13 @@ on:
         type: choice
         required: true
         options:
-          - go
+          - go/go
+          - go/go-docker
           - nodejs/nodejs
+          - nodejs/nodejs-docker
           - nodejs/nextjs-sample
           - nodejs/nodejs-typescript
+          - nodejs/nodejs-typescript-docker
           - python
           - ruby/unicorn
 

@@ -1,6 +1,6 @@
 cliVersion: nucleus-cli/v1alpha1
 spec:
-  serviceName: nodejs-docker
+  serviceName: nodejs-docker-sample
   serviceRuntime: docker
   image: ghcr.io/nucleuscloud/samples/nodejs/nodejs:latest
   isPrivate: false

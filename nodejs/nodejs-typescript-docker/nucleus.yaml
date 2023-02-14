@@ -4,4 +4,3 @@ spec:
   serviceRuntime: docker
   image: ghcr.io/nucleuscloud/samples/nodejs/nodejs-typescript:latest
   isPrivate: false
-ls

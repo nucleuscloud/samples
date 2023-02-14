@@ -1,0 +1,8 @@
+cliVersion: nucleus-cli/v1alpha1
+spec:
+  serviceName: golang-docker-sample
+  serviceRuntime: docker
+  image: ghcr.io/nucleuscloud/samples/go:latest
+  isPrivate: false
+  vars:
+    DEFAULT_NAME: Everybody
